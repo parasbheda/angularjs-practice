@@ -51,3 +51,10 @@ viewControllers.controller('DirectiveController',['$scope', function($scope){
 	$scope.message = 'Hello';
 	console.log("controller");
 }]);
+
+viewControllers.controller('IsolateScopeController', ['$scope', function($scope){
+	console.log("isolate controller");
+	$scope.logChore = function(chore){
+		alert(chore+" is done.");
+	} 
+}]);

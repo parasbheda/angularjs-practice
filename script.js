@@ -40,22 +40,11 @@ myapp.config(function($stateProvider, $urlRouterProvider){
 			url: '/directiveView',
 			templateUrl: "http://localhost:1337/pages/directive-view.html",
 			controller: 'DirectiveController'
+		}).
+		state('isolatescopedirective',{
+			url: '/isolateScope',
+			templateUrl: "http://localhost:1337/pages/isolatescope-directive.html",
+			controller: "IsolateScopeController"
 		});
 });
-
-
-
-myapp.service('MyService', ['$rootScope', function($rootScope){
-	var service = {
-		objects: [{x: 'wxy', y: 'xyz'}, {x: 'abc', y: 'pqr'}],
-
-		addObject: function(obj){
-			service.objects.push(obj);
-			$rootScope.$broadcast('objects.update');
-			console.log("in broadcast"+service.objects.length);
-		}
-	};
-
-	return service;
-}]);
 

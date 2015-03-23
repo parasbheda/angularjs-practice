@@ -56,4 +56,13 @@ viewDirectives.directive("batman", function(){
 		restrict: "E",
 		template: "<div><h3>I am Batman</h3></div>"
 	}
-})
+});
+
+viewDirectives.directive('kid', function(){
+	return{
+		restrict: "E",
+		scope:{},
+		template: '<input type="text" ng-model="chore" />{{chore}}'+
+				  '<button class="button" ng-click="done(chore:chore)">I\'m done</button>'
+	}
+});

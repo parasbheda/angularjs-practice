@@ -1,0 +1,30 @@
+<html ng-app='myapp'>
+	<title>
+		Inserting views
+	</title>
+
+	<head>
+		<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+		<script type="text/javascript" src="../angular-ui-router.min.js"></script>
+		<script type="text/javascript" src="../script.js"></script>
+		<script type="text/javascript" src="../controllers/controller.js"></script>
+		<script type="text/javascript" src="../directives/directives.js"></script>
+		<link rel="stylesheet" type="text/css" href="main.css">
+	</head>
+
+	<body ng-controller="ViewControllerHome">
+	<div>
+	<h1>My Experiment</h1>
+	</div>
+		<div ui-view>
+			<p>{{message}}</p>
+			<button ng-click="changeState()">Change</button>
+			<a ui-sref="view2"/> View2
+			<a ui-sref="serviceview" /> ServiceView
+			<a ui-sref="addobjects" /> AddObjects
+			<a ui-sref="directiveView" />Directive View
+			<br \>
+		</div>
+	</body>
+</html>
+

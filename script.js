@@ -1,45 +1,45 @@
-var myapp = angular.module('myapp',['ui.router','ViewControllers']);
+var myapp = angular.module('myapp',['ui.router','controllers.ViewControllers', 'directives.ViewDirectives']);
 
 myapp.config(function($stateProvider, $urlRouterProvider){
 
-	$urlRouterProvider.otherwise("/home");
+	$urlRouterProvider.otherwise("/");
 
 	$stateProvider
 		.state('home',{
-			url:"/",
-			templateUrl: "/",
+			url:"/home",
+			templateUrl: "/home.html",
 			controller: "ViewControllerHome"
 		})
 		.state('view1',{
 			url:"/view1",
-			templateUrl: "view1.html",
+			templateUrl: "http://localhost:1337/pages//view1.html",
 			controller: "ViewController1"
 		})
 		.state('view2',{
 			url:"/view2",
-			templateUrl: "view2.html",
+			templateUrl: "http://localhost:1337/pages/view2.html",
 			controller: "ViewController2"
 		})
 		.state('dummyview', {
 			url: "/dummyview",
-			templateUrl: "dummyview.html",
+			templateUrl: "http://localhost:1337/pages//dummyview.html",
 			controller: "DummyController"
 
 		})
 		.state('serviceview',{
 			url: "/serviceview",
-			templateUrl: "serviceview.html",
+			templateUrl: "http://localhost:1337/pages//serviceview.html",
 			controller: "ServiceController"
 		})
 		.state('addobjects',{
 			url: "/addobjects",
-			templateUrl: "addobjects.html",
+			templateUrl: "http://localhost:1337/pages//addobjects.html",
 			controller: "AddObjController"
 		})
 		.state('directiveView',{
-			url: "/directiveview",
-			templateUrl: "directive-view.html",
-			directive: "viewDirective"
+			url: '/directiveView',
+			templateUrl: "http://localhost:1337/pages/directive-view.html",
+			controller: 'DirectiveController'
 		});
 });
 

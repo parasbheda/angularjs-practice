@@ -43,6 +43,8 @@ myapp.config(function($stateProvider, $urlRouterProvider){
 		});
 });
 
+
+
 myapp.service('MyService', ['$rootScope', function($rootScope){
 	var service = {
 		objects: [{x: 'wxy', y: 'xyz'}, {x: 'abc', y: 'pqr'}],

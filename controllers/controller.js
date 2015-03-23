@@ -1,4 +1,4 @@
-var viewControllers = angular.module('controllers.ViewControllers',[]);
+var viewControllers = angular.module('controllers.ViewControllers',['services.ViewServices']);
 
 viewControllers.controller('ViewController1',['$scope',
 	function($scope){
@@ -26,6 +26,7 @@ viewControllers.controller('DummyController', ['$scope','$state','$timeout',
 		
 	}]);
 
+// controller that uses a service "MyService"
 viewControllers.controller('ServiceController',['$scope','MyService', 
 	function($scope, MyService){
 		$scope.$on('objects.update', function(event){
@@ -34,6 +35,7 @@ viewControllers.controller('ServiceController',['$scope','MyService',
 		$scope.objects = MyService.objects;
 	}]);
 
+// controller that uses a service "MyService"
 viewControllers.controller('AddObjController',['$scope', 'MyService',
 	function($scope, MyService){
 		$scope.addObj = function(xvalue, yvalue){
@@ -43,14 +45,9 @@ viewControllers.controller('AddObjController',['$scope', 'MyService',
 		};
 	}]);
 
+// used with a directive. the scope variables exposed in here
+// can be used in the directive too.
 viewControllers.controller('DirectiveController',['$scope', function($scope){
 	$scope.message = 'Hello';
 	console.log("controller");
 }]);
-
-// viewControllers.directive('myDirectiveView',[function(){
-// 	return function($scope){
-// 		console.log($scope.message);
-// 	}
-// }])
-

@@ -91,5 +91,63 @@ viewDirectives.directive('fruit', function(){
 		restrict: 'E',
 		scope: {name:'='},
 		template: '<div>{{name}}</div>'
-	}
+	} 
+});
+
+// example displaying intercation of directive with other directives.
+viewDirectives.directive('superhero', function(){
+	return{
+		restrict: 'E',
+		scope:{},
+		controller: function($scope){
+			$scope.abilities = [];
+
+			this.addStrength = function(){
+				$scope.abilities.push('strength');
+			};
+
+			this.addSpeed = function(){
+				$scope.abilities.push('speed');
+			};
+
+			this.addFlight = function(){
+				$scope.abilities.push('flight');
+			}
+		},
+
+		link: function(scope, element){
+			element.addClass("btn");
+			element.addClass("btn-primary");
+			element.bind("mouseenter", function(){
+				console.log(scope.abilities);
+			})
+		}
+	};
+});
+
+viewDirectives.directive('strength', function(){
+	return{
+		require: 'superhero',
+		link: function(scope, element, attrs, superheroController){
+			superheroController.addStrength();
+		}
+	};
+});
+
+viewDirectives.directive('speed', function(){
+	return{
+		require: 'superhero',
+		link: function(scope, element, attrs, superheroController){
+			superheroController.addSpeed();
+		}
+	};
+});
+
+viewDirectives.directive('flight', function(){
+	return{
+		require: 'superhero',
+		link: function(scope, element, attrs, superheroController){
+			superheroController.addFlight();
+		}
+	};
 });

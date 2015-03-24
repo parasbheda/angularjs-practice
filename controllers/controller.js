@@ -63,4 +63,11 @@ viewControllers.controller('IsolateScopeController', ['$scope', function($scope)
 		console.log("change function");
 		alert(chore+" is changed");
 	}
+
+	$scope.sendMessage = function(message){
+		console.log("in send Message fuunction");
+		alert(message);
+	}
+
+	$scope.fruitName = 'Apple';
 }]);

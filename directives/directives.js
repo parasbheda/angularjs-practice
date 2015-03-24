@@ -70,3 +70,26 @@ viewDirectives.directive('kid', function(){
 		'<button class="btn btn-danger" ng-click="change({chore:chore})">I am changed</button>'
 	}
 });
+
+// the '&' sign allows you to invoke an expression, or call an expression,
+// evaluate an expression, whatever, on the parent scope of whatever the directive is on the inside of.
+// one more example on resetrice and '&'
+
+viewDirectives.directive('phone', function(){
+	return {
+		restrict: 'E',
+		scope:{send:'&'},
+		template: '<input type="text" ng-model="text"></input><button class="btn btn-primary" ng-click="send({message:text})">Send Message</button>'
+	}
+});
+// the link https://egghead.io/lessons/angularjs-isolate-scope-expression-binding#/tab-code has detailed explanation
+// and sample code for isolated scope and '&'
+
+// the '=' in the scope helps us get rid of expressions(double curlies). It is bound like an object. The binding is both ways.
+viewDirectives.directive('fruit', function(){
+	return {
+		restrict: 'E',
+		scope: {name:'='},
+		template: '<div>{{name}}</div>'
+	}
+});

@@ -151,3 +151,11 @@ viewDirectives.directive('flight', function(){
 		}
 	};
 });
+
+viewDirectives.directive('panel', function(){
+	return{
+		restrict: 'E',
+		transclude: true,
+		template: '<div class="panel panel-default panel-heading" ng-transclude >I am a panel</div>'
+	}
+});

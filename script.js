@@ -45,6 +45,11 @@ myapp.config(function($stateProvider, $urlRouterProvider){
 			url: '/isolateScope',
 			templateUrl: "http://localhost:1337/pages/isolatescope-directive.html",
 			controller: "IsolateScopeController"
+		})
+		.state('promiseresolve',{
+			url: '/promise-resolve',
+			templateUrl: "http://localhost:1337/pages/promise-resolve.html",
+			controller: "PromiseResolveController"
 		});
 });
 

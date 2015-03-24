@@ -71,3 +71,26 @@ viewControllers.controller('IsolateScopeController', ['$scope', function($scope)
 
 	$scope.fruitName = 'Apple';
 }]);
+
+// defer promise and resolve example.
+// if you do not write the defer.resolve() then the scope.model wont be loaded. 
+viewControllers.controller('PromiseResolveController', ['$q','$scope', function($q, $scope){
+
+	var defer = $q.defer();
+
+	defer.promise
+		.then(function(){
+			alert('This is my promise');
+		})
+		.then(function(){
+			alert('this is mine');
+		})
+		.then(function(){
+			alert('and mine');
+		});
+	defer.resolve();
+
+	$scope.model ={
+		message: "I am an App."
+	};
+}]);

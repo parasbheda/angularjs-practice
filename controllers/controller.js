@@ -55,6 +55,12 @@ viewControllers.controller('DirectiveController',['$scope', function($scope){
 viewControllers.controller('IsolateScopeController', ['$scope', function($scope){
 	console.log("isolate controller");
 	$scope.logChore = function(chore){
+		console.log("done function");
 		alert(chore+" is done.");
-	} 
+	};
+
+	$scope.changeChore = function(chore){
+		console.log("change function");
+		alert(chore+" is changed");
+	}
 }]);

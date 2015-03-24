@@ -58,11 +58,15 @@ viewDirectives.directive("batman", function(){
 	}
 });
 
+// using a directive as an element. Create the html element in template
+// use the scope attribute to set different scopes for the multiple of these elements
+// so that each of this element can be controlled differently. for example in below
+// we have used done to control one button and change to control the other button.
 viewDirectives.directive('kid', function(){
 	return{
 		restrict: "E",
-		scope:{},
-		template: '<input type="text" ng-model="chore" />{{chore}}'+
-				  '<button class="button" ng-click="done(chore:chore)">I\'m done</button>'
+		scope:{done:'&', change:'&'},
+		template: '<input type="text" ng-model="chore" />{{chore}}<br></br><button class="btn btn-primary" ng-click="done({chore:chore})">I am done</button>'+
+		'<button class="btn btn-danger" ng-click="change({chore:chore})">I am changed</button>'
 	}
 });

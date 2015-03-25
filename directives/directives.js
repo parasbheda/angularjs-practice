@@ -160,3 +160,10 @@ viewDirectives.directive('panel', function(){
 	}
 });
 
+viewDirectives.directive('promise', function(){
+	return {
+		restrict: 'E',
+		template: '<input type = "text" ng-model="feedback"/><button class="btn btn-primary" ng-click="submit()">Submit</button>'
+	}
+});
+

@@ -13,3 +13,17 @@ viewServices.service('MyService', ['$rootScope', function($rootScope){
 
 	return service;
 }]);
+
+viewServices.service('PromiseResolveService',['$rootScope', function($rootScope){
+	var service = {
+		feedbacks:[],
+
+		addNewFeedback: function(feedback){
+			service.feedbacks.push(feedback);
+			$rootScope.$broadcast('feedbacks.update');
+			console.log('feed back has been added');
+		}
+	}
+
+	return service;
+}]);

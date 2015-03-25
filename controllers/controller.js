@@ -27,12 +27,13 @@ viewControllers.controller('DummyController', ['$scope','$state','$timeout',
 	}]);
 
 // controller that uses a service "MyService"
-viewControllers.controller('ServiceController',['$scope','MyService', 
-	function($scope, MyService){
+viewControllers.controller('ServiceController',['$scope','MyService', 'PromiseResolveService',
+	function($scope, MyService, prservice){
 		$scope.$on('objects.update', function(event){
 			$scope.objects = MyService.objects;
 		});
 		$scope.objects = MyService.objects;
+		$scope.feedbacks = prservice.feedbacks;
 	}]);
 
 // controller that uses a service "MyService"
@@ -74,23 +75,37 @@ viewControllers.controller('IsolateScopeController', ['$scope', function($scope)
 
 // defer promise and resolve example.
 // if you do not write the defer.resolve() then the scope.model wont be loaded. 
-viewControllers.controller('PromiseResolveController', ['$q','$scope', function($q, $scope){
+// viewControllers.controller('PromiseResolveController', ['$q','$scope', function($q, $scope){
 
+// 	var defer = $q.defer();
+
+// 	defer.promise
+// 		.then(function(){
+// 			alert('This is my promise');
+// 		})
+// 		.then(function(){
+// 			alert('this is mine');
+// 		})
+// 		.then(function(){
+// 			alert('and mine');
+// 		});
+// 	defer.resolve();
+
+// 	$scope.model ={
+// 		message: "I am an App."
+// 	};
+// }]);
+
+viewControllers.controller('PromiseResolveController',['$scope','$q', 'PromiseResolveService', function($scope, $q, prservice){
 	var defer = $q.defer();
+	$scope.submit = function(){
+		//console.log($scope.feedback);
+		prservice.addNewFeedback($scope.feedback);
+		defer.resolve();
+	};	
 
 	defer.promise
 		.then(function(){
-			alert('This is my promise');
-		})
-		.then(function(){
-			alert('this is mine');
-		})
-		.then(function(){
-			alert('and mine');
+			alert("thank you for your feedback!");
 		});
-	defer.resolve();
-
-	$scope.model ={
-		message: "I am an App."
-	};
 }]);

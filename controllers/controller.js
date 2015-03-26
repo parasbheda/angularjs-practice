@@ -8,6 +8,7 @@ viewControllers.controller('ViewController1',['$scope',
 viewControllers.controller('ViewController2',['$scope',
 	function($scope){
 		$scope.message = 'welcome to view2';
+		$scope.toggle = false;
 	}]);
 
 viewControllers.controller('ViewControllerHome',['$scope','$state',

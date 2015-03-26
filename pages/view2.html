@@ -1,3 +1,8 @@
 <div ng-controller="ViewController2">
 {{message}}
+
+	<div>
+		<button ng-click="toggle= !toggle" class="btn btn-primary">Toggle</button>
+		<div class="toggle" ng-if="toggle">Some Content</div>
+	</div>
 </div>

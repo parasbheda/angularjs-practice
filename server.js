@@ -11,8 +11,8 @@ var server = http.createServer(function(request, response){
 	fs.readFile('.'+request.url, function(error, data){
 
 		if(error){
-			response.writeHead(404, {"Content-Type":"text/plain"});
-			response.end('404 file not found');
+			response.writeHead(302, {'Location':'/pages/home.html'});
+			response.end();
 		}else{
 			response.writeHead(200);
 			response.end(data);

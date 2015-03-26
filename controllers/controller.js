@@ -109,3 +109,4 @@ viewControllers.controller('PromiseResolveController',['$scope','$q', 'PromiseRe
 			alert("thank you for your feedback!");
 		});
 }]);
+

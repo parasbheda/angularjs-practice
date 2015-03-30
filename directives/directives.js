@@ -1,7 +1,7 @@
 // the directive module is used with the constroller module to control 
 // behaviour of html pages(views)
 
-var viewDirectives = angular.module('directives.ViewDirectives',[]);
+var viewDirectives = angular.module('directives.ViewDirectives',['controllers.ViewControllers']);
 
 // basic directive 
 viewDirectives.directive('myDirectiveView', [function(){
@@ -166,4 +166,22 @@ viewDirectives.directive('promise', function(){
 		template: '<input type = "text" ng-model="feedback"/><button class="btn btn-primary" ng-click="submit()">Submit</button>'
 	}
 });
+
+// Using ng model in custom directives.
+// ng-model is an inbuilt directive so can be made required by other directives.
+viewDirectives.directive('bank', function(){
+	return{
+		restrict: 'E',
+		template: '<div>Click here to deposit $10</div>',
+		require: 'ngModel',
+		link: function(scope, element, attrs, ngModel){
+			element.on('click', function(){
+				console.log('inside bank');
+				ngModel.$setViewValue(ngModel.$viewValue + 10);
+				scope.$apply();
+			});
+		}
+
+	}
+})
 

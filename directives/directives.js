@@ -183,5 +183,5 @@ viewDirectives.directive('bank', function(){
 		}
 
 	}
-})
+});
 
